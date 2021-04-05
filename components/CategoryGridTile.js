@@ -38,9 +38,7 @@ const styles = StyleSheet.create({
         height: 150,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#000',
-        // alignItems:'center',
-        // justifyContent:'center'
+        borderColor: '#000'
     },
     container: {
         flex: 1,
@@ -59,8 +57,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },
-    TouchableComponent:{
-        flex:1
+    TouchableComponent: {
+        flex: 1
     }
 
 
