@@ -21,12 +21,13 @@ const MealsNavigator = createStackNavigator({
     }
 },
     {
-        defaultNavigationOptions: {
+        // initialRouteName:'CategoryMealScreen',
+        defaultNavigationOptions: { // common to all header style and headerTintColor : for all screen , can be overwritten
 
             headerStyle: {
                 backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '#fff',
             },
-            headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primaryColor,
+            headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primaryColor
 
         }
     }
