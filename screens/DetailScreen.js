@@ -7,6 +7,7 @@ const DetailScreen = props => {
             <Text>
             DetailScreen
             </Text>
+            <Button title="Go Back" onPress={()=>{props.navigation.popToTop()}}/> 
         </View>
     )
 };
