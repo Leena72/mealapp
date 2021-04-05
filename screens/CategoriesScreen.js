@@ -14,7 +14,8 @@ const CategoriesScreen = props => {
             }}>
                 <View >
                     <Text>
-                        {itemData.item.title}
+                        {/* {itemData.item.title} */}
+                        {itemData}
                     </Text>
                 </View>
             </TouchableOpacity>
