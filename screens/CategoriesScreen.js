@@ -6,7 +6,7 @@ import CategoryGridTile from '../components/CategoryGridTile'
 
 
 const CategoriesScreen = props => {
-    console.log("props", props)
+    // console.log("props", props)
 
     const renderGridItem = (itemData) => {
         return (
@@ -18,7 +18,7 @@ const CategoriesScreen = props => {
     }
 
     return (
-        <FlatList keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
+        <FlatList  keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
     )
 };
 

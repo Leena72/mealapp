@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import { View, Button, Text, StyleSheet, FlatList, TouchableOpacity, Platform, TouchableNativeFeedback } from 'react-native'
-import Colors from '../Constant/Color';
-import { CATEGORIES } from '../data/dummyData'
-
 
 const CategoryGridTile = props => {
 
@@ -51,7 +48,9 @@ const styles = StyleSheet.create({
         elevation: 3,
         padding: 15,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 10,
+        borderWidth: 1,
     },
     title: {
         fontSize: 20,

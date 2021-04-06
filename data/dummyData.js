@@ -2,7 +2,7 @@ import Category from '../models/category';
 import Meal from '../models/meal';
 
 export const CATEGORIES = [
-    new Category('c1', 'INDIAN', '#f5428d'),
+    new Category('c1', 'Indian', '#f5428d'),
     new Category('c2', 'Italian', '#f54242'),
     new Category('c3', 'Chinees', '#f5a442'),
     new Category('c4', 'Light & Lovely', '#368dff')
@@ -31,7 +31,7 @@ export const MEAL = [
         ['Wash oats', ' Take a bowl pour milk', 'Add oats and one spoon honey', ' Stir it', 'Add Nuts', 'Mix well', 'Serve'],
         true, true, true, true
     ),
-    new Meal('m1',
+    new Meal('m3',
         ['c3', 'c4'],
         'Salad with tomatoes',
         'luxurious',
@@ -42,7 +42,7 @@ export const MEAL = [
         ['Wash , peel and cut tomatoes and onion' , ' Cook in salted water', 'Salt and pepper the tomatoes', 'salad and dresing', 'Serve'],
         true, true, true, true
     ),
-    new Meal('m1',
+    new Meal('m4',
         ['c1', 'c2', 'c3', 'c4'],
         'Asparagus Salad ',
         'luxurious',
