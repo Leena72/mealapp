@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 15,
         height: 150,
-        borderRadius: 10,
-        borderWidth: 1,
+        // borderRadius: 10,
+        // borderWidth: 1,
         // borderColor: '#000'
     },
     container: {
