@@ -1,9 +1,12 @@
 import React from 'react'
 import MealList from '../components/MealList'
+import {MEAL} from '../data/dummyData'
+
 
 const FavouriteScreen = props => {
+    const favMeal= MEAL.filter(meal=>meal.id === 'm1' || meal.id === 'm2')
     return (
-       <MealList/>
+       <MealList data={favMeal} navigation={props.navigation}/>
     )
 };
 
@@ -14,3 +17,5 @@ FavouriteScreen.navigationOptions = {
 
 
 export default FavouriteScreen
+
+
