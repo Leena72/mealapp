@@ -12,6 +12,18 @@ import { CATEGORIES } from '../data/dummyData'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import Color from '../Constant/Color';
 
+
+const defautOptions = {  // initialRouteName:'CategoryMealScreen',
+    defaultNavigationOptions: { // common to all header style and headerTintColor : for all screen , can be overwritten
+
+        headerStyle: {
+            backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '#fff',
+        },
+        headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primaryColor
+
+    }
+}
+
 const MealsNavigator = createStackNavigator({
     CategoriesScreen: {
         screen: CategoriesScreen,
@@ -24,20 +36,28 @@ const MealsNavigator = createStackNavigator({
     DetailScreen: {
         screen: DetailScreen,
 
-    }
+    },
+
 },
     {
         // initialRouteName:'CategoryMealScreen',
-        defaultNavigationOptions: { // common to all header style and headerTintColor : for all screen , can be overwritten
-
-            headerStyle: {
-                backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '#fff',
-            },
-            headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primaryColor
-
-        }
+        defaultNavigationOptions: defautOptions
     }
 );
+
+
+//stack navigator for favorite screen
+
+const FavNavigator = createStackNavigator({
+    Favorite: FavouriteScreen,
+    MealDetail: DetailScreen
+},
+    {
+
+        defaultNavigationOptions: defautOptions
+    }
+)
+
 
 const tabBottom = {
     Meals: {
@@ -50,7 +70,7 @@ const tabBottom = {
         }
     },
     Favorite: {
-        screen: FavouriteScreen,
+        screen: FavNavigator,
         navigationOptions: {
             tabBarLabel: 'Favorites!',
             tabBarIcon: (tabInfo) => {
@@ -62,14 +82,14 @@ const tabBottom = {
 }
 
 const MealFavTabNavigator = Platform.OS === 'android' ? createMaterialBottomTabNavigator(
-     tabBottom ,
+    tabBottom,
     {
         activeTintColor: Colors.accentColor,
-        shifting:true
+        shifting: true
     }
 ) : createBottomTabNavigator(
     tabBottom
-,
+    ,
     {
         // initialRouteName:'CategoryMealScreen',
         tabBarOptions: {

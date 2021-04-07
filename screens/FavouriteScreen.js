@@ -1,21 +1,16 @@
-import React, { Component } from 'react'
-import { View, Button, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import MealList from '../components/MealList'
 
 const FavouriteScreen = props => {
     return (
-        <View style={styles.screen}>
-            <Text>
-            FavouriteScreen
-            </Text>
-        </View>
+       <MealList/>
     )
 };
 
-const styles = StyleSheet.create({
-screen:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center'
+FavouriteScreen.navigationOptions = {
+    headerTitle: 'Favorite Meal',
+
 }
-})
+
+
 export default FavouriteScreen

@@ -10,15 +10,15 @@ const CategoriesScreen = props => {
 
     const renderGridItem = (itemData) => {
         return (
-            <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onSelect={()=> {
-                props.navigation.navigate({ routeName: 'CategoryMealScreen' , params: { categoryID: itemData.item.id}})
-            }}/>
+            <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onSelect={() => {
+                props.navigation.navigate({ routeName: 'CategoryMealScreen', params: { categoryID: itemData.item.id } })
+            }} />
 
         );
     }
 
     return (
-        <FlatList  keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
+        <FlatList keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
     )
 };
 
