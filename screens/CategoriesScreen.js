@@ -4,6 +4,7 @@ import Colors from '../Constant/Color';
 import { CATEGORIES } from '../data/dummyData'
 import CategoryGridTile from '../components/CategoryGridTile'
 import {HeaderButtons , Item } from 'react-navigation-header-buttons'
+import HeaderButton from '../components/HeaderButton'
 
 
 const CategoriesScreen = props => {
@@ -23,10 +24,16 @@ const CategoriesScreen = props => {
     )
 };
 
-CategoriesScreen.navigationOptions = {
+CategoriesScreen.navigationOptions = navData => {
+    return {
     headerTitle: 'Meal Category',
-
-}
+    headerLeft: 
+    <Button title="=" onPress={()=>{navData.navigation.toggleDrawer()}} />
+    // <HeaderButtons HeaderButtonComponent={HeaderButton}>
+    //     <Item title="Menu" iconName='ios-menu' onPress={()=>{}}/>
+    // </HeaderButtons>
+    }
+    }
 
 const styles = StyleSheet.create({
     screen: {
