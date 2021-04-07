@@ -2,10 +2,12 @@ import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import CategoriesScreen from '../screens/CategoriesScreen'
 import CategoryMealScreen from '../screens/CategoryMealScreen'
 import DetailScreen from '../screens/DetailScreen'
 import FavouriteScreen from '../screens/FavouriteScreen'
+import FilterScreen from '../screens/FilterScreen'
 import Colors from '../Constant/Color'
 import { Ionicons } from '@expo/vector-icons'
 import { CATEGORIES } from '../data/dummyData'
@@ -98,6 +100,14 @@ const MealFavTabNavigator = Platform.OS === 'android' ? createMaterialBottomTabN
     }
 );
 
+const FilterScreennavigator = createStackNavigator({
+    FilterScreen: FilterScreen  
+})
+
+const MainNavigator=createDrawerNavigator({
+    MealsFav: MealFavTabNavigator,
+    FilterScreen: FilterScreennavigator
+})
 
 //nested navigators MealFavTabNavigator(root navigator) --> MealsNavigator
-export default createAppContainer(MealFavTabNavigator)
+export default createAppContainer(MainNavigator)

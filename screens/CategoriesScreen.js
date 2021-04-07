@@ -3,6 +3,7 @@ import { View, Button, Text, StyleSheet, FlatList, TouchableOpacity, Platform } 
 import Colors from '../Constant/Color';
 import { CATEGORIES } from '../data/dummyData'
 import CategoryGridTile from '../components/CategoryGridTile'
+import {HeaderButtons , Item } from 'react-navigation-header-buttons'
 
 
 const CategoriesScreen = props => {
