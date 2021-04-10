@@ -1,10 +1,16 @@
 import React  from 'react'
-import { CATEGORIES, MEAL } from '../data/dummyData'
+import {useSelector} from 'react-redux'
+//useSelector -- inplace of mapStatetoprops mapdispatch connect 
+import { CATEGORIES,
+    // MEAL  --importing from redux store
+     } from '../data/dummyData'
 import MealList from '../components/MealList'
 
 const CategoryMealScreen = props => {
     const catID = props.navigation.getParam('categoryID');
-    const displayMeal = MEAL.filter(meal => meal.categoryIDS.indexOf(catID) >= 0)
+    const MealSlice = useSelector(state => state.mealSlice.filterMeals)
+
+    const displayMeal = MealSlice.filter(meal => meal.categoryIDS.indexOf(catID) >= 0)
     
 
     return (

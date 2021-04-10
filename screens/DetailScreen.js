@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { View, Button, ScrollView, Image, Text, StyleSheet } from 'react-native'
-import { CATEGORIES, MEAL } from '../data/dummyData'
+// import { CATEGORIES, MEAL } from '../data/dummyData'
+import { useSelector } from 'react-redux'
 import HeaderButton from '../components/HeaderButton'
 import {
     HeaderButtons,
@@ -12,7 +13,13 @@ import {
 const DetailScreen = props => {
     console.log("props>>", props)
     const mealID = props.navigation.getParam('mealID');
-    const selectedMeal = MEAL.find(meal => meal.id === mealID)
+    const MealSlice = useSelector(state => state.mealSlice.meals)
+    const selectedMeal = MealSlice.find(meal => meal.id === mealID)
+
+    useEffect(() => {
+        props.navigation.setParams({ mealTitle: selectedMeal.title })
+    }
+        , [selectedMeal]);
 
     return (
         <ScrollView style={styles.scroll} >
@@ -53,10 +60,11 @@ const DetailScreen = props => {
 
 DetailScreen.navigationOptions = (navigationData) => {
     const mealID = navigationData.navigation.getParam('mealID')
-    const selectedMeal = MEAL.find(meal => meal.id === mealID)
-    console.log("selectedMeal", selectedMeal)
+    const avaibleMeal = navigationData.navigation.getParam('mealTitle')
+    // const selectedMeal = mealTitle.find(meal => meal.id === mealID)
+    // console.log("selectedMeal", selectedMeal)
     return {
-        headerTitle: selectedMeal.title,
+        headerTitle: avaibleMeal,
         //  headerRight:<HeaderButtons HeaderButtonComponent={HeaderButton}>
         //      <Item title='Favorite' iconName='ios-star' onPress={()=>{console.log("mark as favorite")}}/>
         //      <OverflowMenu
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#000',
         lineHeight: 20,
-    
+
         flexDirection: 'column',
         fontWeight: 'bold'
     },
@@ -124,8 +132,8 @@ const styles = StyleSheet.create({
     scroll: {
         padding: 10
     },
-    pdBottom:{
-paddingBottom:20
+    pdBottom: {
+        paddingBottom: 20
     }
 })
 export default DetailScreen

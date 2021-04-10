@@ -2,6 +2,7 @@ import React, { useState, useEffect,useCallback } from 'react'
 import { View, Button, Switch, Text, StyleSheet } from 'react-native'
 import Colors from '../Constant/Color'
 
+
 const FilterSwitch = props => {
     return (
         <View style={styles.filterContainer}>
