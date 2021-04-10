@@ -1,4 +1,5 @@
 import React from 'react'
+import { View, Button, Text, StyleSheet, FlatList, TouchableOpacity, Platform } from 'react-native'
 import MealList from '../components/MealList'
 import {MEAL} from '../data/dummyData'
 
@@ -10,9 +11,12 @@ const FavouriteScreen = props => {
     )
 };
 
-FavouriteScreen.navigationOptions = {
+FavouriteScreen.navigationOptions = navData =>{
+ return{
     headerTitle: 'Favorite Meal',
-
+    headerLeft: 
+    <Button title="=" onPress={()=>{navData.navigation.toggleDrawer()}} />
+ }
 }
 
 

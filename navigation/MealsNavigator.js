@@ -74,7 +74,7 @@ const tabBottom = {
     Favorite: {
         screen: FavNavigator,
         navigationOptions: {
-            tabBarLabel: 'Favorites!',
+            tabBarLabel: 'Favorites!',// we can use custom fonts too i.e. <Text style={{fontSize:16}}> favorite</Text>
             tabBarIcon: (tabInfo) => {
                 return <Ionicons name="ios-star" size={20} color={tabInfo.tintColor} />
             },
@@ -102,12 +102,22 @@ const MealFavTabNavigator = Platform.OS === 'android' ? createMaterialBottomTabN
 
 const FilterScreennavigator = createStackNavigator({
     FilterScreen: FilterScreen  
-})
+},
+{
+    defaultNavigationOptions: defautOptions
+}
+)
 
 const MainNavigator=createDrawerNavigator({
-    MealsFav: MealFavTabNavigator,
-    FilterScreen: FilterScreennavigator
-})
+    MealsFav:{screen: MealFavTabNavigator, navigationOptions:{drawerLabel:'Meals'}},
+    FilterScreen: {screen: FilterScreennavigator, navigationOptions:{drawerLabel:'Filter'}}
+},
+{
+    contentOptions:{
+        activeTintColor: Colors.accentColor
+    }
+}
+)
 
 //nested navigators MealFavTabNavigator(root navigator) --> MealsNavigator
 export default createAppContainer(MainNavigator)
