@@ -1,7 +1,8 @@
-import React, { useEffect ,useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { View, Button, ScrollView, Image, Text, StyleSheet } from 'react-native'
 // import { CATEGORIES, MEAL } from '../data/dummyData'
 import { useSelector, useDispatch } from 'react-redux'
+import { Ionicons } from '@expo/vector-icons'
 import HeaderButton from '../components/HeaderButton'
 import {
     HeaderButtons,
@@ -9,26 +10,35 @@ import {
     HiddenItem,
     OverflowMenu,
 } from 'react-navigation-header-buttons';
-import {toggleFavorite} from '../store/action/meal'
+import { toggleFavorite } from '../store/action/meal'
 
 const DetailScreen = props => {
     console.log("props>>", props)
     const mealID = props.navigation.getParam('mealID');
     const MealSlice = useSelector(state => state.mealSlice.meals)
     const selectedMeal = MealSlice.find(meal => meal.id === mealID)
+    const currentFavMeal = useSelector(state => state.mealSlice.filterMeals.some(meal => meal.id === mealID))
 
-const dispatch = useDispatch();
-const toggleFavoriteHandler = useCallback(() =>{
-    dispatch(toggleFavorite(mealID))
-},[dispatch,mealID])
+    const dispatch = useDispatch();
+    const toggleFavoriteHandler = useCallback(() => {
+        dispatch(toggleFavorite(mealID))
+    }, [dispatch, mealID])
 
     useEffect(() => {
         // props.navigation.setParams({ mealTitle: selectedMeal.title }) // setParams is a way to communicating b/w navigation option and component
-    
+
         props.navigation.setParams({ toggleFav: toggleFavoriteHandler }) // setParams is a way to communicating b/w navigation option and component
-    
+
     }
         , [toggleFavoriteHandler]);
+
+    useEffect(() => {
+        // props.navigation.setParams({ mealTitle: selectedMeal.title }) // setParams is a way to communicating b/w navigation option and component
+
+        props.navigation.setParams({ isfavMeal: currentFavMeal }) // setParams is a way to communicating b/w navigation option and component
+
+    }
+        , [currentFavMeal]);
 
     return (
         <ScrollView style={styles.scroll} >
@@ -71,6 +81,7 @@ DetailScreen.navigationOptions = (navigationData) => {
     const mealID = navigationData.navigation.getParam('mealID')
     const toggleFavorite = navigationData.navigation.getParam('toggleFav')
     const avaibleMeal = navigationData.navigation.getParam('mealTitle')
+    const isFavMeal = navigationData.navigation.getParam('isfavMeal')
     // const selectedMeal = mealTitle.find(meal => meal.id === mealID)
     // console.log("selectedMeal", selectedMeal)
     return {
@@ -83,13 +94,15 @@ DetailScreen.navigationOptions = (navigationData) => {
         //       >
         //       </OverflowMenu>
         //  </HeaderButtons>
-        headerRight: <Button
-            onPress={toggleFavorite}
-            title="*"
+        headerRight: <Ionicons name={ isFavMeal ? 'star' : 'star-outline'} size={20} onPress={toggleFavorite} />
+        //  <Ionicons name="ios-star" size={20} onPress={toggleFavorite} />
+        // <Button
+        //     onPress={toggleFavorite}
+        //     title="*"
 
-            style={styles.starbtn}
+        //     style={styles.starbtn}
 
-        />
+        // />
     }
 }
 

@@ -5,6 +5,8 @@ import { CATEGORIES } from '../data/dummyData'
 import CategoryGridTile from '../components/CategoryGridTile'
 import {HeaderButtons , Item } from 'react-navigation-header-buttons'
 import HeaderButton from '../components/HeaderButton'
+import { Ionicons } from '@expo/vector-icons'
+
 
 
 const CategoriesScreen = props => {
@@ -27,8 +29,8 @@ const CategoriesScreen = props => {
 CategoriesScreen.navigationOptions = navData => {
     return {
     headerTitle: 'Meal Category',
-    headerLeft: 
-    <Button title="=" onPress={()=>{navData.navigation.toggleDrawer()}} />
+    headerLeft:  <Ionicons name="reorder-three-outline" size={20} color={Colors.primaryColor} onPress={()=>{navData.navigation.toggleDrawer()}} />
+    // <Button title="=" onPress={()=>{navData.navigation.toggleDrawer()}} />
     // <HeaderButtons HeaderButtonComponent={HeaderButton}>
     //     <Item title="Menu" iconName='ios-menu' onPress={()=>{}}/>
     // </HeaderButtons>
