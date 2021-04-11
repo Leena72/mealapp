@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useCallback } from 'react'
 import { View, Button, ScrollView, Image, Text, StyleSheet } from 'react-native'
 // import { CATEGORIES, MEAL } from '../data/dummyData'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import HeaderButton from '../components/HeaderButton'
 import {
     HeaderButtons,
@@ -9,6 +9,7 @@ import {
     HiddenItem,
     OverflowMenu,
 } from 'react-navigation-header-buttons';
+import {toggleFavorite} from '../store/action/meal'
 
 const DetailScreen = props => {
     console.log("props>>", props)
@@ -16,10 +17,18 @@ const DetailScreen = props => {
     const MealSlice = useSelector(state => state.mealSlice.meals)
     const selectedMeal = MealSlice.find(meal => meal.id === mealID)
 
+const dispatch = useDispatch();
+const toggleFavoriteHandler = useCallback(() =>{
+    dispatch(toggleFavorite(mealID))
+},[dispatch,mealID])
+
     useEffect(() => {
-        props.navigation.setParams({ mealTitle: selectedMeal.title })
+        // props.navigation.setParams({ mealTitle: selectedMeal.title }) // setParams is a way to communicating b/w navigation option and component
+    
+        props.navigation.setParams({ toggleFav: toggleFavoriteHandler }) // setParams is a way to communicating b/w navigation option and component
+    
     }
-        , [selectedMeal]);
+        , [toggleFavoriteHandler]);
 
     return (
         <ScrollView style={styles.scroll} >
@@ -60,6 +69,7 @@ const DetailScreen = props => {
 
 DetailScreen.navigationOptions = (navigationData) => {
     const mealID = navigationData.navigation.getParam('mealID')
+    const toggleFavorite = navigationData.navigation.getParam('toggleFav')
     const avaibleMeal = navigationData.navigation.getParam('mealTitle')
     // const selectedMeal = mealTitle.find(meal => meal.id === mealID)
     // console.log("selectedMeal", selectedMeal)
@@ -74,7 +84,7 @@ DetailScreen.navigationOptions = (navigationData) => {
         //       </OverflowMenu>
         //  </HeaderButtons>
         headerRight: <Button
-            // onPress={navigation.getParam('increaseCount')}
+            onPress={toggleFavorite}
             title="*"
 
             style={styles.starbtn}
