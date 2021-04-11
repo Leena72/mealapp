@@ -2,15 +2,15 @@ import Category from '../models/category';
 import Meal from '../models/meal';
 
 export const CATEGORIES = [
-    new Category('c1', 'Indian', '#f5428d'),
-    new Category('c2', 'Italian', '#f54242'),
-    new Category('c3', 'Chinees', '#f5a442'),
-    new Category('c4', 'Light & Lovely', '#368dff')
+    new Category('c1', 'Indian', '#99ccff'),
+    new Category('c2', 'Italian', '#6699FF'),
+    new Category('c3', 'Chinees', '#6699FF'),
+    new Category('c4', 'Light & Lovely', '#99ccff')
 ]
 
 export const MEAL = [
     new Meal('m1',
-        ['c1', 'c2'],
+        ['c1'],
         'Asparagus Salad with tomatoes',
         'luxurious',
         'simple',
@@ -43,7 +43,7 @@ export const MEAL = [
         true, true, true, true
     ),
     new Meal('m4',
-        ['c1', 'c2', 'c3', 'c4'],
+        [ 'c2', 'c3', 'c4'],
         'Asparagus Salad ',
         'luxurious',
         'simple',
